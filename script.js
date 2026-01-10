@@ -406,3 +406,53 @@ window.addEventListener('load', () => {
         document.body.style.opacity = '1';
     }, 100);
 });
+
+// Contract Address Copy Functionality
+const contractAddress = document.getElementById('contractAddress');
+const copyFeedback = document.getElementById('copyFeedback');
+
+if (contractAddress) {
+    contractAddress.addEventListener('click', async () => {
+        const address = 'BD8iq7m9C88m74vAAMxfZM9Sgo9aASX61UHpV1Mmpump';
+        
+        try {
+            await navigator.clipboard.writeText(address);
+            
+            // Show feedback
+            copyFeedback.style.opacity = '1';
+            copyFeedback.style.transform = 'translateY(0)';
+            
+            // Add visual feedback to the address container
+            contractAddress.classList.add('copied');
+            
+            // Reset after animation
+            setTimeout(() => {
+                copyFeedback.style.opacity = '0';
+                copyFeedback.style.transform = 'translateY(-10px)';
+                contractAddress.classList.remove('copied');
+            }, 2000);
+        } catch (err) {
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = address;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyFeedback.style.opacity = '1';
+                copyFeedback.style.transform = 'translateY(0)';
+                contractAddress.classList.add('copied');
+                setTimeout(() => {
+                    copyFeedback.style.opacity = '0';
+                    copyFeedback.style.transform = 'translateY(-10px)';
+                    contractAddress.classList.remove('copied');
+                }, 2000);
+            } catch (fallbackErr) {
+                console.error('Failed to copy:', fallbackErr);
+            }
+            document.body.removeChild(textArea);
+        }
+    });
+}

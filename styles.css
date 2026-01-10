@@ -359,6 +359,88 @@ body {
     letter-spacing: 0.1em;
 }
 
+/* Contract Address */
+.contract-address-container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+
+.contract-label {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+    margin: 0;
+}
+
+.contract-address {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.contract-address:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.contract-address.copied {
+    background: rgba(135, 206, 250, 0.2);
+    border-color: rgba(135, 206, 250, 0.6);
+    box-shadow: 0 0 30px rgba(135, 206, 250, 0.4);
+}
+
+.contract-text {
+    user-select: all;
+    word-break: break-all;
+}
+
+.copy-icon {
+    flex-shrink: 0;
+    opacity: 0.6;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.contract-address:hover .copy-icon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.copy-feedback {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: rgba(135, 206, 250, 0.9);
+    color: var(--dark-bg);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 /* Lightning Flash Effect - Enhanced */
 .lightning-flash {
     animation: flash 0.2s ease;
@@ -457,5 +539,19 @@ body {
     
     .section {
         padding: 60px 20px;
+    }
+    
+    .contract-address {
+        font-size: 0.75rem;
+        padding: 10px 16px;
+        max-width: calc(100% - 40px);
+    }
+    
+    .contract-text {
+        font-size: 0.7rem;
+    }
+    
+    .contract-label {
+        font-size: 0.8rem;
     }
 }
