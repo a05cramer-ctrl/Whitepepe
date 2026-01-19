@@ -413,7 +413,7 @@ const copyFeedback = document.getElementById('copyFeedback');
 
 if (contractAddress) {
     contractAddress.addEventListener('click', async () => {
-        const address = 'E6LvMMU3M4KJ82UR63LBCpeHWBDHn7yoWADNfJmnpump';
+        const address = 'nzs4mkN6UnPZWGQaG6FNsCDcYnScHqDkbmskFQMpump';
         
         try {
             await navigator.clipboard.writeText(address);
